@@ -2,7 +2,7 @@
 title: "newmarkdownFile"
 output: html_document
 ---
-
+#command line is so much better
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
