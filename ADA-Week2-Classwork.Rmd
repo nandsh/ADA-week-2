@@ -1,28 +1,128 @@
 ---
-title: "newmarkdownFile"
+title: "ADA-Assignment#1"
 output: html_document
 ---
-#command line is so much better
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+#ClassWork
+# Demo try
+```{r}
+fVector <- c(12,23,34)
+```
+#Demo try #2
+```{r}
+fVector
 ```
 
-## Including Plots
+#Matrix
+```{r}
+m <- matrix(data = c(1,2,3,4),nrow = 2,ncol = 2)
+m
+m <- matrix(data = c(5,6,7,8),nrow = 2, ncol = 2)
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+v1 <- c(1,2,3,4)
+v2 <- c(6,7,8,9)
+m1 <- rbind(v1,v2)
+m2 <- cbind(v1,v2)
+m1
+m2
+```
+#DataLoad
+``` {r}
+df<- read.csv("~/Desktop/notWork/School/RWorkingDirectory/88-week-2/students.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+df
+str(df)
+```
+#Challenges for Module 4
+#Challenge 1
+``` {r}
+require(stringr)
+stringVector <- stringr::str_split("Four score and seven years ago our fathers brought forth on this continent,a new nation, conceived in Liberty , and dedicated to the proposition that all men are created equal"," ")[[1]]
+stringVector
+stringVector[seq(from = 1,to = length(stringVector), by = 3)]
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+#Challenge 2
+###Given the matrix, my_matrix, extract the 2nd, 3rd, and 6th columns and assign them to the variable x
+```{r}
+my_matrix <- matrix(c(1:80),nrow = 8, ncol = 10)
+my_matrix
+x<- matrix(c(my_matrix[,2],my_matrix[,6],my_matrix[,9]),nrow = 8,ncol = 3)
+x
+x <- my_matrix[,c(2,3,6)]
+x
+```
+###Given the matrix, my_matrix, above, extract the 6th to 8th row and assign them to the variable x
+```{r}
+x<- my_matrix[6:8,]
+x
+```
+###Given the matrix, my_matrix, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x
+```{r}
+x<- my_matrix[c(2:6),c(2:9)]
+x
+```
+#Challenge 3
+###Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named *a* consisting of the numbers 400 to 1 (i.e., a descending series)
+
+```{r}
+a <- array(data =400:1, dim = c(5, 5, 4, 4))
+a
+```
+### Given this matrix, what would the following return?
+``` {r}
+a[1, 1, 1, 2]
+
+a[2, 3, 2, ]
+
+a[1:5, 1:5, 3, 3]
+```
+#Challenge 4
+###Create a list representing this (simplified) primate taxonomy. Hint: you can use lists as elements in a list.
+```{r}
+Platyrrhini <- c ("Cebidae", "Atelidae", "Pitheciidae")
+Platyrrhini
+Catarrhini <- c ("Cercopithecidae","Hylobatidae","Hominidae")
+Catarrhini
+Anthropoidea <- list(Platyrrhini,Catarrhini)
+Anthropoidea
+names(Anthropoidea) <- c("Platyrrhini","Catarrhini")
+Anthropoidea
+Tarsioidea <- c("Tarsiidae")
+Haplorhini <- list(Anthropoidea,Tarsioidea)
+names(Haplorhini) <- c("Anthropoidea","Tarsioidea")
+Lorisoidea <- c("Lorisidae","Galagidae")
+Lemuroidea <- c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+Strepsirhini <- list(Lorisoidea,Lemuroidea)
+names(Strepsirhini) <- c("Lorisoidea","Lemuroidea")
+Strepsirhini
+Haplorhini
+Primates <- list(Haplorhini,Strepsirhini)
+names(Primates) <- c("Haplorhini","Strepsirhini")
+Primates
+```
+#Challenge 5
+###Store the following numbers as a 6 x 3 matrix: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2
+```{r}
+challengeF <- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2),nrow = 6,ncol = 3)
+challengeF
+```
+###Then, do the following:
+####Coerce the matrix to a data frame.
+```{r}
+str(challengeF)
+challengeF <- as.data.frame(challengeF)
+str(challengeF)
+```
+####As a data frame, coerce the second column to be logical-valued
+```{r}
+challengeF[,2] <- as.logical(challengeF[,2])
+str(challengeF)
+```
+####As a data frame, coerce the third column to be factor-valued
+```{r}
+challengeF[,3] <- as.factor(challengeF[,3])
+str(challengeF)
+```
